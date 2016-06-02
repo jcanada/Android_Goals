@@ -4,12 +4,27 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class VolleyActivity extends AppCompatActivity {
+    List<Person> persons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +41,12 @@ public class VolleyActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        
+        persons = new ArrayList<>();
+        
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recycler_view);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(new RVAdapter(persons));
     }
 
     @Override
