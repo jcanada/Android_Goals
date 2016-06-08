@@ -1,12 +1,11 @@
 package com.example.rikacanada.goalsvolley;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Rika Canada on 6/2/2016.
  */
-public class Person implements Serializable {
+public class Person{
     private String id;
     private int age;
     private String eyeColor;
